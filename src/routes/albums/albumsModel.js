@@ -6,21 +6,21 @@ const findAll = () => {
 
 const findById = (id) => {
   return db
-    .query('SELECT * FROM ALBUMS where id = ?', [id])
-    .then(([albums]) => albums);
+    .query('SELECT * FROM albums WHERE id = ?', [id])
+    .then(([album]) => album);
 };
 
 const findTracksByAlbumId = (id) => {
   return db
-    .query('SELECT * FROM ALBUMS where id_album = ?', [id])
+    .query('SELECT * FROM track WHERE id_album = ?', [id])
     .then(([tracks]) => tracks);
 };
 
 const create = (album) => {
-  const [title, genre, picture, artist] = album;
+  const { title, genre, picture, artist } = album;
   return db
     .query(
-      'INSERT INTO albums (title, genre, picture, artist) VALUES (?, ?, ?, ?)',
+      'INSERT INTO albums (title, genre, picture, artist) VALUES (?,?,?,?)',
       [title, genre, picture, artist]
     )
     .then(([result]) => result);
