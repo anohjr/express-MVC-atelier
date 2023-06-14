@@ -1,6 +1,3 @@
-const connexion = require('../../../db-config');
-const db = connexion.promise();
-
 const getOne = (req, res) => {
   res.status(200).send('Get One route is OK');
 };
